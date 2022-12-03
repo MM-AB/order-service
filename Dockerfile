@@ -1,5 +1,6 @@
 FROM openjdk:19
-
-COPY target/*.jar order-service-0.0.1-SNAPSHOT.jar
-
-ENTRYPOINT ["java", "-jar", "/order-service-0.0.1-SNAPSHOT.jar"]
+WORKDIR /opt
+ENV PORT 8080
+EXPOSE 8080
+COPY target/*.jar /opt/app.jar
+ENTRYPOINT exec java $JAVA_OPTS -jar app.jar
