@@ -1,3 +1,3 @@
 # order-service
 
-order microservice, map
+order microservice
