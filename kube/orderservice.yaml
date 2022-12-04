@@ -14,12 +14,12 @@ spec:
     spec:
       containers:
         - name: order-app
-          image: padajno/rso-projekt:order-service
+          image: padajno/rso-projekt:order-mongo-cloud
           ports:
             - containerPort: 8080
           env:
             - name: MONGO_URL
-              value: mongodb://mongo:27017/order-service
+              value: mongodb+srv://admin:rso2022@cluster1.wmakwed.mongodb.net/dbOrder?retryWrites=true&w=majority
           imagePullPolicy: Always
 ---
 apiVersion: v1
