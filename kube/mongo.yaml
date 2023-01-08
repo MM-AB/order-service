@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
         - name: mongo
-          image: padajno/rso-projekt:mongo
+          image: rsoreg1.azurecr.io/mongo
           ports:
             - containerPort: 27017
           volumeMounts:
@@ -45,3 +45,5 @@ spec:
         - name: storage
           persistentVolumeClaim:
             claimName: mongo-pvc
+      imagePullSecrets:
+        - name: guidesecret

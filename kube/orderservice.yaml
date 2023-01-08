@@ -13,14 +13,15 @@ spec:
         app: order-service
     spec:
       containers:
-        - name: order-app
-          image: padajno/rso-projekt:order-mongo-cloud
+        - name: order-container
+          image: rsoreg1.azurecr.io/rso-az:1.0.0
           ports:
             - containerPort: 8080
           env:
             - name: MONGO_URL
-              value: mongodb+srv://admin:rso2022@cluster1.wmakwed.mongodb.net/dbOrder?retryWrites=true&w=majority
-          imagePullPolicy: Always
+              value: mongodb://mongo:27017/dev
+      imagePullSecrets:
+      - name: guidesecret
 ---
 apiVersion: v1
 kind: Service
@@ -30,6 +31,6 @@ spec:
   selector:
     app: order-service
   ports:
-    - port: 80
+    - port: 8080
       targetPort: 8080
   type: LoadBalancer
